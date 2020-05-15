@@ -14,6 +14,9 @@ class GetMyWeather {
   factory GetMyWeather.fromJson(Map<String, dynamic> json) =>
       _$GetMyWeatherFromJson(json);
   Map<String, dynamic> toJson() => _$GetMyWeatherToJson(this);
+
+  @override
+  String toString() => '$cod $message $cnt';
 }
 
 @JsonSerializable()

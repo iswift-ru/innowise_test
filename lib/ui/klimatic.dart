@@ -95,9 +95,11 @@ class GeolocationExampleState extends State {
     var dio = Dio();
     Response response = await dio.get(apiUrl);
     print(response.data);
+    //print(response.statusCode);
 
-    return response.data.map((f) => GetMyWeather.fromJson(f)).toList();
-
+    var spisok = response.data.map((f) => GetMyWeather.fromJson(f)).toList();
+    print(spisok);
+    return spisok;
     //var data = await http.get(apiUrl);
 
     // var jsonData = convert.jsonDecode(data.body);
@@ -111,16 +113,17 @@ class GeolocationExampleState extends State {
         builder: (BuildContext context, AsyncSnapshot<Map> snapshot) {
           if (snapshot.hasData) {
             Map content = snapshot.data;
-            print(snapshot.data.toString());
+            print('Билдим! ${snapshot.data.toString()}');
             return ListView.builder(
               shrinkWrap: true,
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(
-                    snapshot.data[index].cod.toString(),
+                    snapshot.data[index].cod,
                     style: TextStyle(color: Colors.red, fontSize: 20),
                   ),
+                  //subtitle: Text(GetMyWeather.cod.toString()),
                 );
               },
             );
