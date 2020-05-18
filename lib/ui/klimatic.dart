@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
+
 import 'package:geolocator/geolocator.dart';
 import 'dart:async';
 import 'package:dio/dio.dart';
@@ -112,7 +111,7 @@ class GeolocationExampleState extends State {
         future: getWeather(),
         builder: (BuildContext context, AsyncSnapshot<Map> snapshot) {
           if (snapshot.hasData) {
-            Map content = snapshot.data;
+            //Map content = snapshot.data;
             print('Билдим! ${snapshot.data.toString()}');
             return ListView.builder(
               shrinkWrap: true,
